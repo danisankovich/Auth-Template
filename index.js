@@ -6,11 +6,13 @@ const morgan = require('morgan');
 const app = express();
 const router = require('./routes/index');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 mongoose.connect('mongodb://localhost:auth/auth');
 
 //APP SETUP
 app.use(morgan('combined'));
+app.use(cors());
 app.use(bodyParser.json({ type: '*/*'}));
 
 router(app);
